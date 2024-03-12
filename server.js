@@ -21,6 +21,7 @@ db.once('open', () => {
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 // // Definir el modelo de datos
@@ -49,7 +50,8 @@ app.post('/anadirFrase', (req, res) => {
 });
 
 app.delete('/eliminarFrase', (req, res) => {
-  db.collection('frases').deleteOne({ cancion: req.body.fraseJS })
+  console.log(req.body)
+  db.collection('frases').deleteOne({ frase: req.body.fraseJs })
   .then(result => {
     console.log('Frase eliminada')
     res.json('Frase eliminada')

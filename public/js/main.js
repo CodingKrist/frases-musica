@@ -11,7 +11,7 @@ async function eliminarFrase() {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-              'fraseJS': fraseTexto
+              'fraseJs': fraseTexto
             })
           })
         const data = await response.json()
