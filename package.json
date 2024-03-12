@@ -1,16 +1,19 @@
 {
   "name": "music-phrases",
   "version": "1.0.0",
-  "description": "",
+  "description": "simple music phrases using Node, express, ejs and mongoDB from scratch",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
     "express": "^4.18.3",
+    "mongodb": "^6.5.0",
     "mongoose": "^8.2.1"
   }
 }

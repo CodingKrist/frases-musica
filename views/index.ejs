@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frases de canciones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Frases de canciones:</h1>
+    <ul class="totalFrases">
+
+        <% for(let i=0; i < totalFrases.length; i++) {%>
+            <li class="frase">
+                <span><%= totalFrases[i].frase %> -</span>
+                <span><%= totalFrases[i].artista %></span>
+                <span>(<%= totalFrases[i].cancion %>)</span>
+                <span class="fas fa-trash"></span>
+            </li>
+        <% } %>    
+    </ul>
+    <h2>¿Cuál te gusta más? ¡añade la tuya!</h2>
+    <form action="/anadirFrase" method="POST">
+        <input type="text" placeholder="Artista" name="artista">
+        <input type="text" placeholder="Frase" name="frase">
+        <input type="text" placeholder="Canción" name="cancion">
+        <button>Añadir</button>
+    </form>
+    <script src="js/main.js"></script>
+</body>
+</html>
