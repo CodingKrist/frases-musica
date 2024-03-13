@@ -14,8 +14,10 @@
         <% for(let i=0; i < totalFrases.length; i++) {%>
             <li class="frase">
                 <span><%= totalFrases[i].frase %></span>
-                <span><%= totalFrases[i].artista %></span>
+                <span> - <%= totalFrases[i].artista %></span>
                 <span>(<%= totalFrases[i].cancion %>)</span>
+                <span><%= totalFrases[i].likes %></span>
+                <span class="fa fa-thumbs-up"></span>
                 <span class="fas fa-trash"></span>
             </li>
         <% } %>    

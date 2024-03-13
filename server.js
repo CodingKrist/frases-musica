@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 // });
 
 app.get('/', async (req, res) => {
-  const getFrases = await db.collection('frases').find().toArray()
+  const getFrases = await db.collection('frases').find().sort({likes: -1}).toArray()
   res.render('index.ejs', { totalFrases: getFrases })
 });
 
@@ -41,6 +41,7 @@ app.post('/anadirFrase', (req, res) => {
       artista: req.body.artista,
       frase: req.body.frase,
       cancion: req.body.cancion,
+      likes: 0,
     })
     .then(result => {
         console.log(`Artista ${req.body.artista} añadido`)
@@ -50,14 +51,29 @@ app.post('/anadirFrase', (req, res) => {
 });
 
 app.delete('/eliminarFrase', (req, res) => {
-  console.log(req.body)
-  db.collection('frases').deleteOne({ frase: req.body.fraseJs })
+    db.collection('frases').deleteOne({ frase: req.body.fraseJs })
   .then(result => {
     console.log('Frase eliminada')
     res.json('Frase eliminada')
 })
   .catch(error => console.error(error))
 })
+
+app.put('/sumarLike', (req, res) => {
+  db.collection('frases').findOneAndUpdate({ frase: req.body.fraseJs },{
+    $set: {
+      likes: req.body.likesJs + 1
+    }
+  },{
+    upsert: false
+  })
+.then(result => {
+  console.log('Liked')
+  res.json('Liked')
+})
+.catch(error => console.error(error))
+})
+
 
 app.listen(PORT, () => {
   console.log(`El servidor está ejecutándose en el puerto ${PORT}`);
