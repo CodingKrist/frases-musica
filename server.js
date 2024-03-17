@@ -24,7 +24,7 @@ app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
-// // Definir el modelo de datos
+// // Definir el modelo de datos -> Schema
 // const Frases = mongoose.model('Frase', {
 //   artista: String,
 //   frase: String,
